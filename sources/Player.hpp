@@ -5,20 +5,24 @@
 namespace coup{
     class Player{
     private:
-        int money;
-        std::string Name;
-        Game game;
         bool not_blocked;
-        bool dead;
-        bool fore_aid;
     protected:
-        Player(Game start_game, std::string name);
+        Player(Game &start_game, const std::string &name);
+
+        bool fore_aid;
     public:
+
+        std::string last_action;
         void income();
         void foreign_aid();
         virtual void coup(Player player);
         virtual std::string role();
         int coins();
-        void block(Player player);
+        virtual void block(Player player);
+        Game &game;
+        bool dead;
+        std::string Name;
+        int money;
+        bool blockable;
     };
 }
